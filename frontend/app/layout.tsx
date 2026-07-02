@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "sonner";
-import { Chatbot } from "@/components/Chatbot";
+import { LazyChatbot } from "@/components/LazyChatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,7 +55,7 @@ export default function RootLayout({
 
           {children}
           <Toaster />
-          <Chatbot />
+          <LazyChatbot />
         </ThemeProvider>
       </body>
     </html>
