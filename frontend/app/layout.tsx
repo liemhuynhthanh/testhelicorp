@@ -18,10 +18,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Helicorp SmartWatch | Đồng hồ thông minh AI hàng đầu",
   description: "Helicorp SmartWatch - Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện. Thiết kế Titanium sang trọng, màn hình AMOLED, pin 7 ngày, ECG & GPS tích hợp.",
+  keywords: ["Đồng hồ thông minh", "SmartWatch", "Helicorp", "Đồng hồ AI", "Theo dõi sức khỏe", "SmartWatch Titanium"],
+  authors: [{ name: "Helicorp" }],
   openGraph: {
-    title: "Helicorp SmartWatch",
-    description: "Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện từ Helicorp.",
+    title: "Helicorp SmartWatch | Đồng hồ thông minh AI",
+    description: "Khám phá Helicorp SmartWatch - Sự kết hợp hoàn hảo giữa thiết kế cơ học tinh xảo và AI giám sát sức khỏe 24/7.",
     type: "website",
+    locale: "vi_VN",
+    siteName: "Helicorp SmartWatch",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Helicorp SmartWatch | Đồng hồ thông minh AI",
+    description: "Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện từ Helicorp.",
   },
 };
 
@@ -32,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="vi"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
