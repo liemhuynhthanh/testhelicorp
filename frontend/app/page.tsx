@@ -1,12 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import RegistrationForm from "@/components/RegistrationForm";
+import dynamic from "next/dynamic";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CartDrawer } from "@/components/CartDrawer";
-import { ProductsSection } from "@/components/ProductsSection";
+
+const RegistrationForm = dynamic(() => import("@/components/RegistrationForm"), {
+  ssr: false,
+  loading: () => <div className="h-64 w-full bg-zinc-100 dark:bg-zinc-800 animate-pulse rounded-2xl"></div>
+});
+
+const ProductsSection = dynamic(() => import("@/components/ProductsSection").then(m => m.ProductsSection), {
+  ssr: true, // we still want SEO for products
+});
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -52,6 +60,8 @@ export default function Home() {
               alt="Helicorp SmartWatch Hero"
               fill
               priority
+              fetchPriority="high"
+              sizes="100vw"
               className="object-cover object-center opacity-40 scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
