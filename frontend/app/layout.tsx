@@ -13,11 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Helicorp Smart Ring | Công nghệ sức khỏe tương lai",
-  description: "Thiết bị theo dõi sức khỏe thông minh tích hợp AI hàng đầu từ Helicorp. Theo dõi giấc ngủ, nhịp tim và phân tích dữ liệu cá nhân hóa.",
+  title: "Helicorp SmartWatch | Đồng hồ thông minh AI hàng đầu",
+  description: "Helicorp SmartWatch - Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện. Thiết kế Titanium sang trọng, màn hình AMOLED, pin 7 ngày, ECG & GPS tích hợp.",
   openGraph: {
-    title: "Helicorp Smart Ring",
-    description: "Thiết bị theo dõi sức khỏe thông minh tích hợp AI hàng đầu từ Helicorp.",
+    title: "Helicorp SmartWatch",
+    description: "Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện từ Helicorp.",
     type: "website",
   },
 };
