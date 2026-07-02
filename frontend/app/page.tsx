@@ -1,220 +1,285 @@
+"use client";
+
 import Image from "next/image";
 import RegistrationForm from "@/components/RegistrationForm";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { CartDrawer } from "@/components/CartDrawer";
+import { ProductsSection } from "@/components/ProductsSection";
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-zinc-200">
+  const { scrollYProgress } = useScroll();
+  const yHero = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  
+  const showcaseRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: showcaseProgress } = useScroll({
+    target: showcaseRef,
+    offset: ["start end", "end start"]
+  });
 
+  const yMasonry1 = useTransform(showcaseProgress, [0, 1], ["0%", "-20%"]);
+  const yMasonry2 = useTransform(showcaseProgress, [0, 1], ["10%", "-40%"]);
+  const yMasonry3 = useTransform(showcaseProgress, [0, 1], ["-10%", "-10%"]);
+
+  return (
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 font-sans selection:bg-zinc-200 dark:selection:bg-zinc-800 transition-colors duration-500">
       {/* Navbar */}
-      <header className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-zinc-100">
+      <header className="fixed top-0 w-full z-50 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="font-bold text-xl tracking-tighter text-black">HELICORP</div>
-          <nav className="hidden md:flex gap-8 text-sm font-medium text-zinc-500">
-            <a href="#features" className="hover:text-black transition-colors">Tính năng</a>
-            <a href="#showcase" className="hover:text-black transition-colors">Thiết kế</a>
-            <a href="#specs" className="hover:text-black transition-colors">Thông số</a>
-            <a href="#register" className="hover:text-black transition-colors">Đặt trước</a>
+          <div className="font-bold text-xl tracking-tighter text-black dark:text-white">HELICORP</div>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+            <a href="#scrollytelling" className="hover:text-black dark:hover:text-white transition-colors">Trải nghiệm</a>
+            <a href="#showcase" className="hover:text-black dark:hover:text-white transition-colors">Thiết kế</a>
+            <a href="#specs" className="hover:text-black dark:hover:text-white transition-colors">Thông số</a>
+            <a href="#products" className="hover:text-black dark:hover:text-white transition-colors">Sản phẩm</a>
+            <a href="#register" className="hover:text-black dark:hover:text-white transition-colors">Đặt trước</a>
           </nav>
+          <div className="flex items-center gap-4 ml-8">
+            <ThemeToggle />
+            <CartDrawer />
+          </div>
         </div>
       </header>
 
       <main>
-
-        {/* ─── HERO ─── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-[#f5f5f7]">
-          {/* Background image full bleed */}
-          <div className="absolute inset-0">
+        {/* ─── HERO PARALLAX ─── */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+          {/* Background image parallax */}
+          <motion.div style={{ y: yHero }} className="absolute inset-0 z-0">
             <Image
               src="/1.jpg"
               alt="Helicorp SmartWatch Hero"
               fill
               priority
-              className="object-cover object-center opacity-30 scale-110 rounded-2xl"
+              className="object-cover object-center opacity-40 scale-105"
             />
-            <div className="absolute inset-0 bg-linear-to-b from-[#f5f5f7]/60 via-[#f5f5f7]/40 to-[#f5f5f7]"></div>
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
+          </motion.div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 grid md:grid-cols-2 gap-16 items-center">
-            {/* Text */}
-            <div className="flex flex-col gap-7">
-              <span className="inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-semibold text-zinc-600 shadow-sm">
+          <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-20">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-white shadow-sm mb-8">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-zinc-700"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                 </span>
-                Helicorp SmartWatch — Ra mắt 2026
+                Kỷ nguyên mới của SmartWatch
               </span>
-              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-none  text-black">
-                Sức khỏe<br />trên cổ tay.
-              </h1>
-              <p className="text-lg md:text-xl text-zinc-500 max-w-md leading-relaxed">
-                Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện. Thiết kế Titanium sang trọng, màn hình AMOLED sắc nét và pin lên đến 7 ngày.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="#register" className="h-14 px-8 rounded-full bg-black text-white font-semibold text-base flex items-center transition-transform hover:scale-105 hover:shadow-xl hover:shadow-black/20">
-                  Đặt trước ngay
-                </a>
-                <a href="#features" className="h-14 px-8 rounded-full border border-zinc-300 text-black font-semibold text-base flex items-center hover:bg-zinc-50 transition-colors">
-                  Khám phá tính năng
-                </a>
-              </div>
-            </div>
-
-            {/* Hero image */}
-            <div className="relative flex justify-center">
-              <div className="relative w-85 h-105 md:w-105 md:h-130 rounded-4xl overflow-hidden shadow-2xl shadow-black/10">
-                <Image
-                  src="/1.jpg"
-                  alt="Helicorp SmartWatch"
-                  fill
-                  priority
-                  className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.15)] rounded-3xl"
-                />
-              </div>
-            </div>
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none text-white mb-6"
+            >
+              Vượt qua <br /> giới hạn.
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="text-lg md:text-2xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+            >
+              Đồng hồ thông minh kết hợp thiết kế cơ học tinh xảo cùng AI giám sát sức khỏe chuyên sâu 24/7.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="flex justify-center"
+            >
+              <a href="#register" className="h-14 px-10 rounded-full bg-white text-black font-semibold text-base flex items-center transition-transform hover:scale-105 hover:shadow-xl hover:shadow-white/20">
+                Đặt trước ngay
+              </a>
+            </motion.div>
           </div>
         </section>
 
-        {/* ─── FEATURES ─── */}
-        <section id="features" className="py-32 bg-white">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-20">
-              <p className="text-sm font-semibold uppercase tracking-widest text-zinc-400 mb-4">Tính năng nổi bật</p>
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-black max-w-2xl leading-[1.05]">
-                Mọi chỉ số.<br />Mọi lúc. Mọi nơi.
-              </h2>
+        {/* ─── SCROLLYTELLING: TÍNH NĂNG ─── */}
+        <section id="scrollytelling" className="relative bg-zinc-950">
+          <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+            <div className="text-center mb-24">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">Tuyệt tác trên cổ tay.</h2>
+              <p className="text-xl text-zinc-400 max-w-2xl mx-auto">Từng chi tiết được chế tác tỉ mỉ với chất liệu Titanium hàng không, mang đến độ bền vô song cùng vẻ đẹp vượt thời gian.</p>
             </div>
 
-            {/* Bento Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-              {/* Feature 1 — Sleep (ảnh 3) */}
-              <div className="relative rounded-4xl overflow-hidden bg-zinc-950 min-h-115 flex flex-col justify-end group">
-                <Image src="/3.jpg" alt="Theo dõi giấc ngủ" fill className="object-cover opacity-70 transition-transform duration-1000 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent"></div>
-                <div className="relative z-10 p-10">
-                  <div className="text-xs font-bold uppercase tracking-widest text-white/50 mb-3">Giấc ngủ AI</div>
-                  <h3 className="text-3xl font-bold text-white mb-3">Điểm giấc ngủ<br />mỗi sáng thức dậy</h3>
-                  <p className="text-white/70 max-w-sm">Phân tích chính xác từng giai đoạn giấc ngủ. Đánh giá & gợi ý cải thiện cá nhân hóa.</p>
+            {/* Sticky Scroll Section */}
+            <div className="flex flex-col md:flex-row gap-12 relative items-start">
+              {/* Sticky Text */}
+              <div className="md:w-1/3 md:sticky top-32 space-y-24 py-12 z-10">
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-4">Mặt kính Sapphire</h3>
+                  <p className="text-zinc-400 text-lg">Chống xước tuyệt đối, hiển thị sắc nét dưới mọi góc nhìn, kể cả trong điều kiện ánh sáng gắt nhất.</p>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-4">Cảm biến sinh học AI</h3>
+                  <p className="text-zinc-400 text-lg">Theo dõi liên tục nhịp tim, nồng độ oxy trong máu và mức độ căng thẳng với độ chính xác chuẩn y tế.</p>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-4">Phân tích giấc ngủ</h3>
+                  <p className="text-zinc-400 text-lg">Tự động nhận diện các chu kỳ giấc ngủ và đưa ra gợi ý cải thiện để bạn thức dậy đầy năng lượng.</p>
                 </div>
               </div>
 
-              {/* Feature 2 — Health Alert (ảnh 4) */}
-              <div className="relative rounded-4xl overflow-hidden bg-zinc-950 min-h-115 flex flex-col justify-end group">
-                <Image src="/4.jpg" alt="Theo dõi sức khỏe" fill className="object-cover opacity-70 transition-transform duration-1000 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent"></div>
-                <div className="relative z-10 p-10">
-                  <div className="text-xs font-bold uppercase tracking-widest text-white/50 mb-3">Sức khỏe tim mạch</div>
-                  <h3 className="text-3xl font-bold text-white mb-3">Cảnh báo huyết áp<br />tức thì</h3>
-                  <p className="text-white/70 max-w-sm">Phát hiện và cảnh báo các bất thường về huyết áp và nhịp tim ngay trên cổ tay bạn.</p>
-                </div>
-              </div>
-
-              {/* Stats Row */}
-              <div className="md:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-6">
-                {[
-                  { num: "20+", label: "Chỉ số sức khỏe", sub: "SpO2, nhiệt độ, căng thẳng…", dark: true },
-                  { num: "7", label: "Ngày pin", sub: "Sạc không dây, luôn sẵn sàng", dark: false },
-                  { num: "5ATM", label: "Kháng nước", sub: "Thoải mái bơi lội tới 50m", dark: false },
-                  { num: "24/7", label: "Theo dõi ECG", sub: "Chuẩn y tế, cảnh báo rung nhĩ", dark: true },
-                ].map((s, i) => (
-                  <div key={i} className={`rounded-[1.75rem] p-8 flex flex-col justify-between min-h-50 ${s.dark ? "bg-zinc-950 text-white" : "bg-zinc-50 border border-zinc-100 text-black"}`}>
-                    <div className={`text-5xl font-bold mb-3 ${s.dark ? "text-white" : "text-black"}`}>{s.num}</div>
-                    <div>
-                      <div className="font-semibold mb-1">{s.label}</div>
-                      <div className={`text-sm ${s.dark ? "text-zinc-400" : "text-zinc-500"}`}>{s.sub}</div>
-                    </div>
-                  </div>
+              {/* Scrolling Images */}
+              <div className="md:w-2/3 space-y-12">
+                {[1, 2, 3, 4, 5].map((num) => (
+                  <motion.div 
+                    key={num}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-20%" }}
+                    transition={{ duration: 0.8 }}
+                    className="relative w-full h-[60vh] rounded-3xl overflow-hidden"
+                  >
+                    <Image 
+                      src={`/${num}.jpg`} 
+                      alt={`Feature ${num}`} 
+                      fill 
+                      className="object-cover" 
+                    />
+                    <div className="absolute inset-0 border border-white/10 rounded-3xl z-10 pointer-events-none"></div>
+                  </motion.div>
                 ))}
               </div>
-
             </div>
           </div>
         </section>
 
-        {/* ─── SHOWCASE ─── */}
-        <section id="showcase" className="py-24 md:py-32 bg-[#f5f5f7]">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-4">Thiết kế vượt thời gian.</h2>
-              <p className="text-xl text-zinc-500">Chế tác từ nhôm và Titanium cao cấp. Tinh xảo trong từng đường nét.</p>
-            </div>
+        {/* ─── SHOWCASE PARALLAX GALLERY ─── */}
+        <section id="showcase" ref={showcaseRef} className="py-32 bg-white dark:bg-zinc-50 overflow-hidden relative">
+          <div className="max-w-7xl mx-auto px-6 mb-20 text-center relative z-10">
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-black mb-6">Đậm chất riêng.</h2>
+            <p className="text-xl text-zinc-600 max-w-2xl mx-auto">Bộ sưu tập dây đeo đa dạng, từ da thật cổ điển đến silicone thể thao, biến hóa phong cách trong tích tắc.</p>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Lifestyle image lớn */}
-              <div className="md:col-span-2 relative rounded-4xl overflow-hidden min-h-125 group shadow-sm border border-zinc-100">
-                <Image src="/5.jpg" alt="Lifestyle" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                  <h3 className="text-2xl font-bold mb-2">Đồng hành mọi khoảnh khắc</h3>
-                  <p className="text-white/80 max-w-sm">Nhẹ nhàng trên cổ tay, mạnh mẽ trong từng chỉ số.</p>
-                </div>
+          <div className="flex gap-4 md:gap-8 max-w-[1400px] mx-auto px-4 h-[80vh] md:h-[100vh]">
+            <motion.div style={{ y: yMasonry1 }} className="flex-1 flex flex-col gap-4 md:gap-8 pt-10">
+              <div className="relative w-full h-[40%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
+                <Image src="/5.jpg" alt="Gallery 5" fill className="object-cover" />
               </div>
+              <div className="relative w-full h-[60%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
+                <Image src="/6.jpg" alt="Gallery 6" fill className="object-cover" />
+              </div>
+            </motion.div>
 
-              {/* Two small images stacked */}
-              <div className="flex flex-col gap-6">
-                <div className="relative rounded-4xl overflow-hidden min-h-58.75 group shadow-sm border border-zinc-100">
-                  <Image src="/1.jpg" alt="Detail" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
-                </div>
-                <div className="relative rounded-4xl overflow-hidden min-h-58.75 group shadow-sm border border-zinc-100">
-                  <Image src="/2.jpg" alt="Side View" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
-                </div>
+            <motion.div style={{ y: yMasonry2 }} className="flex-1 flex flex-col gap-4 md:gap-8">
+              <div className="relative w-full h-[55%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
+                <Image src="/7.jpg" alt="Gallery 7" fill className="object-cover" />
               </div>
-            </div>
+              <div className="relative w-full h-[45%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
+                <Image src="/8.jpg" alt="Gallery 8" fill className="object-cover" />
+              </div>
+            </motion.div>
+
+            <motion.div style={{ y: yMasonry3 }} className="flex-1 flex flex-col gap-4 md:gap-8 pt-20">
+              <div className="relative w-full h-[50%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
+                <Image src="/9.jpg" alt="Gallery 9" fill className="object-cover" />
+              </div>
+              <div className="relative w-full h-[50%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
+                <Image src="/10.jpg" alt="Gallery 10" fill className="object-cover" />
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ─── FULL WIDTH PARALLAX ─── */}
+        <section className="relative h-screen overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 z-0 bg-black">
+            <Image
+              src="/11.jpg"
+              alt="Premium Design"
+              fill
+              className="object-cover object-center opacity-60"
+            />
+          </div>
+          <div className="relative z-10 text-center px-6">
+            <motion.h2 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="text-5xl md:text-8xl font-bold text-white tracking-tighter"
+            >
+              Vẻ đẹp không thỏa hiệp.
+            </motion.h2>
           </div>
         </section>
 
         {/* ─── SPECS ─── */}
-        <section id="specs" className="py-32 bg-white border-t border-zinc-100">
+        <section id="specs" className="py-32 bg-zinc-950 text-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-2xl mx-auto mb-20">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-4">Thông số kỹ thuật.</h2>
-              <p className="text-xl text-zinc-500">Chi tiết nhỏ làm nên sự khác biệt lớn.</p>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Sức mạnh tiềm ẩn.</h2>
+              <p className="text-xl text-zinc-400">Hiệu năng vượt trội nằm gọn trong lớp vỏ tinh xảo.</p>
             </div>
 
-            <div className="max-w-5xl mx-auto overflow-hidden rounded-4xl border border-zinc-100 shadow-sm">
-              {[
-                { label: "Màn hình", value: "AMOLED Always-On 1.9 inch, 60Hz" },
-                { label: "Vật liệu vỏ", value: "Nhôm cao cấp / Titanium nguyên khối" },
-                { label: "Thời lượng pin", value: "Lên đến 7 ngày — Sạc không dây" },
-                { label: "Kháng nước", value: "5ATM (bơi lội an toàn tới 50m)" },
-                { label: "Cảm biến sức khỏe", value: "ECG, SpO2, Nhịp tim, Nhiệt độ da, Mức căng thẳng" },
-                { label: "Kết nối", value: "Bluetooth 5.2, GPS tích hợp, NFC" },
-              ].map((row, i) => (
-                <div key={i} className={`flex items-start justify-between px-8 py-6 gap-8 ${i % 2 === 0 ? "bg-white" : "bg-zinc-50"} ${i !== 5 ? "border-b border-zinc-100" : ""}`}>
-                  <span className="text-sm font-semibold text-zinc-500 uppercase tracking-wide min-w-40">{row.label}</span>
-                  <span className="text-base font-medium text-black text-right">{row.value}</span>
-                </div>
-              ))}
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="relative w-full aspect-square rounded-full overflow-hidden border-8 border-zinc-900 shadow-[0_0_100px_rgba(255,255,255,0.05)]">
+                <Image src="/12.jpg" alt="Specs visualization" fill className="object-cover" />
+              </div>
+
+              <div className="space-y-6">
+                {[
+                  { label: "Màn hình", value: "AMOLED LTPO 1.9\", 2000 nits" },
+                  { label: "Vật liệu", value: "Titanium Grade 5 & Sapphire" },
+                  { label: "Thời lượng pin", value: "7 ngày ở chế độ Smart, 30 ngày cơ bản" },
+                  { label: "Chống nước", value: "10ATM (Phù hợp lặn sâu 100m)" },
+                  { label: "Chip xử lý", value: "Helicorp S1 Dual-core AI" },
+                ].map((row, i) => (
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between py-5 border-b border-zinc-800"
+                  >
+                    <span className="text-sm font-semibold text-zinc-500 uppercase tracking-widest">{row.label}</span>
+                    <span className="text-lg font-medium text-white mt-1 sm:mt-0">{row.value}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
+        {/* ─── PRODUCTS ─── */}
+        <ProductsSection />
+
         {/* ─── REGISTRATION ─── */}
-        <section id="register" className="py-32 bg-[#f5f5f7] border-t border-zinc-200">
+        <section id="register" className="py-32 bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
           <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6 leading-[1.1]">
-                Trải nghiệm<br />tương lai.<br />Ngay hôm nay.
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-black dark:text-white mb-6 leading-tight">
+                Đặt trước.<br />Dẫn đầu xu hướng.
               </h2>
-              <p className="text-lg text-zinc-500 mb-10 max-w-md leading-relaxed">
-                Đăng ký để trở thành những người đầu tiên sở hữu Helicorp SmartWatch với mức giá ưu đãi đặc biệt dành cho khách hàng đặt trước.
+              <p className="text-lg text-zinc-500 dark:text-zinc-400 mb-10 max-w-md leading-relaxed">
+                Trở thành những người đầu tiên sở hữu Helicorp SmartWatch. Nhận đặc quyền ưu đãi 20% và tham gia cộng đồng Beta Tester.
               </p>
               <ul className="space-y-4">
                 {[
-                  "Nhận thông báo khi sản phẩm mở bán chính thức",
-                  "Mã giảm giá 20% cho đơn hàng đầu tiên",
-                  "Cơ hội tham gia chương trình dùng thử Beta",
+                  "Thông báo sớm nhất khi mở bán",
+                  "Voucher 20% dành riêng khách hàng đặt trước",
+                  "Tặng kèm 1 dây đeo thể thao cao cấp",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-zinc-600 font-medium">
-                    <span className="shrink-0 w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-xs font-bold">✓</span>
+                  <li key={i} className="flex items-center gap-3 text-zinc-700 dark:text-zinc-300 font-medium">
+                    <span className="shrink-0 w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">✓</span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-white p-8 md:p-12 rounded-4xl border border-zinc-100 shadow-xl shadow-black/5">
+            <div className="bg-zinc-50 dark:bg-zinc-950 p-8 md:p-12 rounded-4xl border border-zinc-200 dark:border-zinc-800 shadow-xl shadow-black/5 dark:shadow-white/5">
               <RegistrationForm />
             </div>
           </div>
@@ -223,7 +288,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 text-zinc-400 py-12">
+      <footer className="bg-zinc-950 text-zinc-400 py-12 border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
           <div className="font-bold text-white text-lg tracking-tighter">HELICORP</div>
           <p>© 2026 Helicorp. Tất cả quyền được bảo lưu.</p>
