@@ -44,8 +44,8 @@ export async function POST(req: Request) {
       },
     });
 
-    // Send Discord notification asynchronously (don't block the response)
-    sendDiscordWebhook("🚀 Khách Hàng Đăng Ký Nhận Ưu Đãi", {
+    // Send Discord notification and await it so Vercel doesn't kill the function early
+    await sendDiscordWebhook("🚀 Khách Hàng Đăng Ký Nhận Ưu Đãi", {
       "Họ Tên": fullName,
       "SĐT": phone,
       "Email": email,
