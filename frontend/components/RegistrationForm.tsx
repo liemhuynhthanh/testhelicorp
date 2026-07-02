@@ -7,6 +7,7 @@ export default function RegistrationForm() {
   const [errors, setErrors] = useState({ fullName: "", phone: "", email: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [serverError, setServerError] = useState("");
 
   const validate = () => {
     let isValid = true;
@@ -41,16 +42,43 @@ export default function RegistrationForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
-      setIsSubmitting(true);
-      // Simulate API call (will be implemented in phase 3)
-      setTimeout(() => {
-        setIsSubmitting(false);
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+    setServerError("");
+
+    try {
+      const res = await fetch("/api/v1/registrations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.status === 201) {
         setIsSuccess(true);
         setFormData({ fullName: "", phone: "", email: "" });
-      }, 1500);
+      } else if (res.status === 400) {
+        // Lỗi validation từ backend — map về từng field
+        const fieldErrors: Record<string, string> = await res.json();
+        setErrors({
+          fullName: fieldErrors.fullName ?? "",
+          phone: fieldErrors.phone ?? "",
+          email: fieldErrors.email ?? "",
+        });
+      } else if (res.status === 409) {
+        // Email hoặc phone đã tồn tại
+        const body: { message: string } = await res.json();
+        setServerError(body.message);
+      } else {
+        setServerError("Đã xảy ra lỗi. Vui lòng thử lại sau.");
+      }
+    } catch {
+      setServerError("Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại kết nối.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
 
   if (isSuccess) {
     return (
@@ -60,7 +88,7 @@ export default function RegistrationForm() {
         <p className="text-zinc-500 mb-8 leading-relaxed">
           Cảm ơn bạn đã quan tâm. Thông tin của bạn đã được ghi nhận, chúng tôi sẽ sớm liên hệ để tư vấn chi tiết.
         </p>
-        <button 
+        <button
           onClick={() => setIsSuccess(false)}
           className="text-sm font-semibold text-black hover:underline"
         >
@@ -81,11 +109,10 @@ export default function RegistrationForm() {
           type="text"
           value={formData.fullName}
           onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-          className={`w-full px-5 py-3.5 rounded-xl border bg-white focus:outline-none focus:ring-4 transition-all duration-300 ${
-            errors.fullName 
-              ? "border-red-200 focus:border-red-400 focus:ring-red-100" 
+          className={`w-full px-5 py-3.5 rounded-xl border bg-white focus:outline-none focus:ring-4 transition-all duration-300 ${errors.fullName
+              ? "border-red-200 focus:border-red-400 focus:ring-red-100"
               : "border-zinc-200 hover:border-zinc-300 focus:border-zinc-400 focus:ring-zinc-100"
-          }`}
+            }`}
           placeholder="Nhập họ và tên của bạn"
         />
         {errors.fullName && <p className="mt-2 text-sm text-red-500 font-medium animate-in slide-in-from-top-1">{errors.fullName}</p>}
@@ -100,11 +127,10 @@ export default function RegistrationForm() {
           type="tel"
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className={`w-full px-5 py-3.5 rounded-xl border bg-white focus:outline-none focus:ring-4 transition-all duration-300 ${
-            errors.phone 
-              ? "border-red-200 focus:border-red-400 focus:ring-red-100" 
+          className={`w-full px-5 py-3.5 rounded-xl border bg-white focus:outline-none focus:ring-4 transition-all duration-300 ${errors.phone
+              ? "border-red-200 focus:border-red-400 focus:ring-red-100"
               : "border-zinc-200 hover:border-zinc-300 focus:border-zinc-400 focus:ring-zinc-100"
-          }`}
+            }`}
           placeholder="Ví dụ: 0912345678"
         />
         {errors.phone && <p className="mt-2 text-sm text-red-500 font-medium animate-in slide-in-from-top-1">{errors.phone}</p>}
@@ -119,11 +145,10 @@ export default function RegistrationForm() {
           type="email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className={`w-full px-5 py-3.5 rounded-xl border bg-white focus:outline-none focus:ring-4 transition-all duration-300 ${
-            errors.email 
-              ? "border-red-200 focus:border-red-400 focus:ring-red-100" 
+          className={`w-full px-5 py-3.5 rounded-xl border bg-white focus:outline-none focus:ring-4 transition-all duration-300 ${errors.email
+              ? "border-red-200 focus:border-red-400 focus:ring-red-100"
               : "border-zinc-200 hover:border-zinc-300 focus:border-zinc-400 focus:ring-zinc-100"
-          }`}
+            }`}
           placeholder="email@example.com"
         />
         {errors.email && <p className="mt-2 text-sm text-red-500 font-medium animate-in slide-in-from-top-1">{errors.email}</p>}
@@ -143,6 +168,12 @@ export default function RegistrationForm() {
           "Đăng ký nhận ưu đãi"
         )}
       </button>
+
+      {serverError && (
+        <p className="text-sm text-red-500 font-medium text-center animate-in slide-in-from-top-1 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+          {serverError}
+        </p>
+      )}
     </form>
   );
 }
