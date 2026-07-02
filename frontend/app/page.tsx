@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { m, LazyMotion, domAnimation, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CartDrawer } from "@/components/CartDrawer";
@@ -51,11 +51,10 @@ export default function Home() {
       </header>
 
       <main>
-        <LazyMotion features={domAnimation}>
           {/* ─── HERO PARALLAX ─── */}
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
             {/* Background image parallax */}
-            <m.div style={{ y: yHero }} className="absolute inset-0 z-0">
+            <motion.div style={{ y: yHero }} className="absolute inset-0 z-0">
               <Image
                 src="/1.jpg"
                 alt="Helicorp SmartWatch Hero"
@@ -67,10 +66,10 @@ export default function Home() {
                 className="object-cover object-center opacity-40 scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
-            </m.div>
+            </motion.div>
 
             <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-20">
-              <m.div
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2 }}
@@ -82,27 +81,27 @@ export default function Home() {
                   </span>
                   Kỷ nguyên mới của SmartWatch
                 </span>
-              </m.div>
+              </motion.div>
 
-              <m.h1
+              <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
                 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none text-white mb-6"
               >
                 Vượt qua <br /> giới hạn.
-              </m.h1>
+              </motion.h1>
 
-              <m.p
+              <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.6 }}
                 className="text-lg md:text-2xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed"
               >
                 Đồng hồ thông minh kết hợp thiết kế cơ học tinh xảo cùng AI giám sát sức khỏe chuyên sâu 24/7.
-              </m.p>
+              </motion.p>
 
-              <m.div
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.8 }}
@@ -111,7 +110,7 @@ export default function Home() {
                 <a href="#register" className="h-14 px-10 rounded-full bg-white text-black font-semibold text-base flex items-center transition-transform hover:scale-105 hover:shadow-xl hover:shadow-white/20">
                   Đặt trước ngay
                 </a>
-              </m.div>
+              </motion.div>
             </div>
           </section>
 
@@ -144,7 +143,7 @@ export default function Home() {
                 {/* Scrolling Images */}
                 <div className="md:w-2/3 space-y-12">
                   {[1, 2, 3, 4, 5].map((num) => (
-                    <m.div
+                    <motion.div
                       key={num}
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -159,7 +158,7 @@ export default function Home() {
                         className="object-cover"
                       />
                       <div className="absolute inset-0 border border-white/10 rounded-3xl z-10 pointer-events-none"></div>
-                    </m.div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -174,32 +173,32 @@ export default function Home() {
             </div>
 
             <div className="flex gap-4 md:gap-8 max-w-[1400px] mx-auto px-4 h-[80vh] md:h-[100vh]">
-              <m.div style={{ y: yMasonry1 }} className="flex-1 flex flex-col gap-4 md:gap-8 pt-10">
+              <motion.div style={{ y: yMasonry1 }} className="flex-1 flex flex-col gap-4 md:gap-8 pt-10">
                 <div className="relative w-full h-[40%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
                   <Image src="/5.jpg" alt="Gallery 5" fill className="object-cover" />
                 </div>
                 <div className="relative w-full h-[60%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
                   <Image src="/6.jpg" alt="Gallery 6" fill className="object-cover" />
                 </div>
-              </m.div>
+              </motion.div>
 
-              <m.div style={{ y: yMasonry2 }} className="flex-1 flex flex-col gap-4 md:gap-8">
+              <motion.div style={{ y: yMasonry2 }} className="flex-1 flex flex-col gap-4 md:gap-8">
                 <div className="relative w-full h-[55%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
                   <Image src="/7.jpg" alt="Gallery 7" fill className="object-cover" />
                 </div>
                 <div className="relative w-full h-[45%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
                   <Image src="/8.jpg" alt="Gallery 8" fill className="object-cover" />
                 </div>
-              </m.div>
+              </motion.div>
 
-              <m.div style={{ y: yMasonry3 }} className="flex-1 flex flex-col gap-4 md:gap-8 pt-20">
+              <motion.div style={{ y: yMasonry3 }} className="flex-1 flex flex-col gap-4 md:gap-8 pt-20">
                 <div className="relative w-full h-[50%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
                   <Image src="/9.jpg" alt="Gallery 9" fill className="object-cover" />
                 </div>
                 <div className="relative w-full h-[50%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
                   <Image src="/10.jpg" alt="Gallery 10" fill className="object-cover" />
                 </div>
-              </m.div>
+              </motion.div>
             </div>
           </section>
 
@@ -214,7 +213,7 @@ export default function Home() {
               />
             </div>
             <div className="relative z-10 text-center px-6">
-              <m.h2
+              <motion.h2
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -222,7 +221,7 @@ export default function Home() {
                 className="text-5xl md:text-8xl font-bold text-white tracking-tighter"
               >
                 Vẻ đẹp không thỏa hiệp.
-              </m.h2>
+              </motion.h2>
             </div>
           </section>
 
@@ -247,7 +246,7 @@ export default function Home() {
                     { label: "Chống nước", value: "10ATM (Phù hợp lặn sâu 100m)" },
                     { label: "Chip xử lý", value: "Helicorp S1 Dual-core AI" },
                   ].map((row, i) => (
-                    <m.div
+                    <motion.div
                       key={i}
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -257,7 +256,7 @@ export default function Home() {
                     >
                       <span className="text-sm font-semibold text-zinc-500 uppercase tracking-widest">{row.label}</span>
                       <span className="text-lg font-medium text-white mt-1 sm:mt-0">{row.value}</span>
-                    </m.div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -297,7 +296,6 @@ export default function Home() {
             </div>
           </section>
 
-        </LazyMotion>
       </main>
 
       {/* Footer */}
