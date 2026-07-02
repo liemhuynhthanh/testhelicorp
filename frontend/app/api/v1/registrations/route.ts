@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     // Validate inputs
     const errors: Record<string, string> = {};
     if (!fullName?.trim()) errors.fullName = "Vui lòng nhập họ tên";
-    
+
     const phoneRegex = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
     if (!phone?.trim()) errors.phone = "Vui lòng nhập số điện thoại";
     else if (!phoneRegex.test(phone)) errors.phone = "Số điện thoại không hợp lệ";
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       "Họ Tên": fullName,
       "SĐT": phone,
       "Email": email,
-      "Thời Gian": new Date().toLocaleString("vi-VN"),
+      "Thời Gian": new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }),
     });
 
     return NextResponse.json(newRegistration, { status: 201 });
