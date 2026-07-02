@@ -84,13 +84,13 @@ export default function RegistrationForm() {
     return (
       <div className="p-10 text-center bg-zinc-50/80 rounded-[2rem] border border-zinc-100 shadow-sm animate-in fade-in duration-500">
         <div className="text-5xl mb-6">🎉</div>
-        <h3 className="text-2xl font-semibold mb-3 text-black">Đăng ký thành công!</h3>
-        <p className="text-zinc-500 mb-8 leading-relaxed">
+        <h3 className="text-2xl font-semibold mb-3 text-black dark:text-white">Đăng ký thành công!</h3>
+        <p className="text-zinc-500 dark:text-zinc-400 mb-8 leading-relaxed">
           Cảm ơn bạn đã quan tâm. Thông tin của bạn đã được ghi nhận, chúng tôi sẽ sớm liên hệ để tư vấn chi tiết.
         </p>
         <button
           onClick={() => setIsSuccess(false)}
-          className="text-sm font-semibold text-black hover:underline"
+          className="text-sm font-semibold text-black dark:text-white hover:underline"
         >
           Đăng ký thêm người khác
         </button>
@@ -101,7 +101,7 @@ export default function RegistrationForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
       <div>
-        <label className="block text-sm font-semibold text-black mb-2" htmlFor="fullName">
+        <label className="block text-sm font-semibold text-black dark:text-white mb-2" htmlFor="fullName">
           Họ và tên <span className="text-red-500">*</span>
         </label>
         <input
@@ -109,9 +109,9 @@ export default function RegistrationForm() {
           type="text"
           value={formData.fullName}
           onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-          className={`w-full px-5 py-3.5 rounded-xl border bg-white focus:outline-none focus:ring-4 transition-all duration-300 ${errors.fullName
-              ? "border-red-200 focus:border-red-400 focus:ring-red-100"
-              : "border-zinc-200 hover:border-zinc-300 focus:border-zinc-400 focus:ring-zinc-100"
+          className={`w-full px-5 py-3.5 rounded-xl border bg-white dark:bg-zinc-900 text-black dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-4 transition-all duration-300 ${errors.fullName
+            ? "border-red-200 focus:border-red-400 focus:ring-red-100"
+            : "border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 focus:border-zinc-400 dark:focus:border-zinc-600 focus:ring-zinc-100 dark:focus:ring-zinc-800"
             }`}
           placeholder="Nhập họ và tên của bạn"
         />
@@ -119,7 +119,7 @@ export default function RegistrationForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-black mb-2" htmlFor="phone">
+        <label className="block text-sm font-semibold text-black dark:text-white mb-2" htmlFor="phone">
           Số điện thoại <span className="text-red-500">*</span>
         </label>
         <input
@@ -127,9 +127,9 @@ export default function RegistrationForm() {
           type="tel"
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className={`w-full px-5 py-3.5 rounded-xl border bg-white focus:outline-none focus:ring-4 transition-all duration-300 ${errors.phone
-              ? "border-red-200 focus:border-red-400 focus:ring-red-100"
-              : "border-zinc-200 hover:border-zinc-300 focus:border-zinc-400 focus:ring-zinc-100"
+          className={`w-full px-5 py-3.5 rounded-xl border bg-white dark:bg-zinc-900 text-black dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-4 transition-all duration-300 ${errors.phone
+            ? "border-red-200 focus:border-red-400 focus:ring-red-100"
+            : "border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 focus:border-zinc-400 dark:focus:border-zinc-600 focus:ring-zinc-100 dark:focus:ring-zinc-800"
             }`}
           placeholder="Ví dụ: 0912345678"
         />
@@ -137,7 +137,7 @@ export default function RegistrationForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-black mb-2" htmlFor="email">
+        <label className="block text-sm font-semibold text-black dark:text-white mb-2" htmlFor="email">
           Email <span className="text-red-500">*</span>
         </label>
         <input
@@ -145,9 +145,9 @@ export default function RegistrationForm() {
           type="email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className={`w-full px-5 py-3.5 rounded-xl border bg-white focus:outline-none focus:ring-4 transition-all duration-300 ${errors.email
-              ? "border-red-200 focus:border-red-400 focus:ring-red-100"
-              : "border-zinc-200 hover:border-zinc-300 focus:border-zinc-400 focus:ring-zinc-100"
+          className={`w-full px-5 py-3.5 rounded-xl border bg-white dark:bg-zinc-900 text-black dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-4 transition-all duration-300 ${errors.email
+            ? "border-red-200 focus:border-red-400 focus:ring-red-100"
+            : "border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 focus:border-zinc-400 dark:focus:border-zinc-600 focus:ring-zinc-100 dark:focus:ring-zinc-800"
             }`}
           placeholder="email@example.com"
         />
