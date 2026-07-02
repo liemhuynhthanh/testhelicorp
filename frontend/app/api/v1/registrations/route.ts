@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-
+import { sendDiscordWebhook } from "@/lib/webhook";
 
 export async function POST(req: Request) {
   try {
@@ -42,6 +42,14 @@ export async function POST(req: Request) {
         phone,
         email,
       },
+    });
+
+    // Send Discord notification asynchronously (don't block the response)
+    sendDiscordWebhook("🚀 Khách Hàng Đăng Ký Nhận Ưu Đãi", {
+      "Họ Tên": fullName,
+      "SĐT": phone,
+      "Email": email,
+      "Thời Gian": new Date().toLocaleString("vi-VN"),
     });
 
     return NextResponse.json(newRegistration, { status: 201 });
