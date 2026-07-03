@@ -157,11 +157,11 @@ export default function RegistrationForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 w-full h-14 bg-black text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-black/20 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center"
+        className="mt-2 w-full h-14 bg-black dark:bg-white text-white dark:text-black rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-black/20 dark:hover:shadow-white/20 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center"
       >
         {isSubmitting ? (
           <span className="flex items-center gap-2">
-            <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+            <span className="w-4 h-4 border-2 border-white/30 border-t-white dark:border-black/30 dark:border-t-black rounded-full animate-spin"></span>
             Đang xử lý...
           </span>
         ) : (

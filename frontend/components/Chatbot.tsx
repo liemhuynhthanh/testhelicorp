@@ -16,7 +16,7 @@ export function Chatbot() {
     {
       id: "welcome",
       role: "bot",
-      content: "Xin chào! Tôi là chuyên viên tư vấn ảo của Helicorp SmartWatch. Tôi có thể giúp gì cho bạn hôm nay?",
+      content: "Xin chào! Tôi là chuyên viên tư vấn ảo của Corp SmartWatch. Tôi có thể giúp gì cho bạn hôm nay?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -112,7 +112,7 @@ export function Chatbot() {
                   <Bot className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black dark:text-white leading-tight">Helicorp Assistant</h3>
+                  <h3 className="font-semibold text-black dark:text-white leading-tight">Corp Assistant</h3>
                   <p className="text-xs text-zinc-500 dark:text-zinc-400">Luôn sẵn sàng hỗ trợ</p>
                 </div>
               </div>
