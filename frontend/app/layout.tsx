@@ -14,8 +14,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
+  verification: {
+    google: "H3j6RaQ4_toY8_yOPZeKsXAfEVAGcwLFhfi_B39TDkY",
+  },
   title: "Corp SmartWatch | Đồng hồ thông minh AI hàng đầu",
   description: "Corp SmartWatch - Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện. Thiết kế Titanium sang trọng, màn hình AMOLED, pin 7 ngày, ECG & GPS tích hợp.",
   keywords: ["Đồng hồ thông minh", "SmartWatch", "Corp", "Đồng hồ AI", "Theo dõi sức khỏe", "SmartWatch Titanium"],
