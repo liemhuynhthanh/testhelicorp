@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -28,12 +28,32 @@ export const metadata: Metadata = {
     type: "website",
     locale: "vi_VN",
     siteName: "Corp SmartWatch",
+    images: [
+      {
+        url: "/1.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Corp SmartWatch",
+      }
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Corp SmartWatch | Đồng hồ thông minh AI",
     description: "Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện từ Corp.",
+    images: ["/1.jpg"],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+  ],
 };
 
 export default function RootLayout({
