@@ -16,21 +16,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Helicorp SmartWatch | Đồng hồ thông minh AI hàng đầu",
-  description: "Helicorp SmartWatch - Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện. Thiết kế Titanium sang trọng, màn hình AMOLED, pin 7 ngày, ECG & GPS tích hợp.",
-  keywords: ["Đồng hồ thông minh", "SmartWatch", "Helicorp", "Đồng hồ AI", "Theo dõi sức khỏe", "SmartWatch Titanium"],
-  authors: [{ name: "Helicorp" }],
+  title: "Corp SmartWatch | Đồng hồ thông minh AI hàng đầu",
+  description: "Corp SmartWatch - Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện. Thiết kế Titanium sang trọng, màn hình AMOLED, pin 7 ngày, ECG & GPS tích hợp.",
+  keywords: ["Đồng hồ thông minh", "SmartWatch", "Corp", "Đồng hồ AI", "Theo dõi sức khỏe", "SmartWatch Titanium"],
+  authors: [{ name: "Corp" }],
   openGraph: {
-    title: "Helicorp SmartWatch | Đồng hồ thông minh AI",
-    description: "Khám phá Helicorp SmartWatch - Sự kết hợp hoàn hảo giữa thiết kế cơ học tinh xảo và AI giám sát sức khỏe 24/7.",
+    title: "Corp SmartWatch | Đồng hồ thông minh AI",
+    description: "Khám phá Corp SmartWatch - Sự kết hợp hoàn hảo giữa thiết kế cơ học tinh xảo và AI giám sát sức khỏe 24/7.",
     type: "website",
     locale: "vi_VN",
-    siteName: "Helicorp SmartWatch",
+    siteName: "Corp SmartWatch",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Helicorp SmartWatch | Đồng hồ thông minh AI",
-    description: "Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện từ Helicorp.",
+    title: "Corp SmartWatch | Đồng hồ thông minh AI",
+    description: "Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện từ Corp.",
   },
 };
 
