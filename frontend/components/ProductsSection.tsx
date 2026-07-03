@@ -9,21 +9,21 @@ import { type Product } from "@/lib/store";
 const MOCK_PRODUCTS: Product[] = [
   {
     id: "hw-titanium-silver",
-    name: "Helicorp SmartWatch Silver",
+    name: "Corp SmartWatch Silver",
     price: 999,
     image: "/2.jpg",
     color: "Titanium Silver"
   },
   {
     id: "hw-titanium-black",
-    name: "Helicorp SmartWatch Black",
+    name: "Corp SmartWatch Black",
     price: 1099,
     image: "/8.jpg",
     color: "Titanium Black"
   },
   {
     id: "hw-titanium-gold",
-    name: "Helicorp SmartWatch Gold",
+    name: "Corp SmartWatch Gold",
     price: 1199,
     image: "/10.jpg",
     color: "Titanium Gold"

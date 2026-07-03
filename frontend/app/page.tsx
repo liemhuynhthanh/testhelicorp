@@ -63,7 +63,7 @@ export default function Home() {
       {/* Navbar */}
       <header className="fixed top-0 w-full z-50 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="font-bold text-xl tracking-tighter text-black dark:text-white">HELICORP</div>
+          <div className="font-bold text-xl tracking-tighter text-black dark:text-white">CORP</div>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-500 dark:text-zinc-400">
             <a href="#scrollytelling" className="hover:text-black dark:hover:text-white transition-colors">Trải nghiệm</a>
             <a href="#showcase" className="hover:text-black dark:hover:text-white transition-colors">Thiết kế</a>
@@ -85,7 +85,7 @@ export default function Home() {
           <motion.div style={{ y: yHero }} className="absolute inset-0 z-0">
             <Image
               src="/1.jpg"
-              alt="Helicorp SmartWatch Hero"
+              alt="Corp SmartWatch Hero"
               fill
               priority
               fetchPriority="high"
@@ -282,7 +282,7 @@ export default function Home() {
                   { label: "Vật liệu", value: "Titanium Grade 5 & Sapphire" },
                   { label: "Thời lượng pin", value: "7 ngày ở chế độ Smart, 30 ngày cơ bản" },
                   { label: "Chống nước", value: "10ATM (Phù hợp lặn sâu 100m)" },
-                  { label: "Chip xử lý", value: "Helicorp S1 Dual-core AI" },
+                  { label: "Chip xử lý", value: "Corp S1 Dual-core AI" },
                 ].map((row, i) => (
                   <motion.div
                     key={i}
@@ -312,7 +312,7 @@ export default function Home() {
                 Đặt trước.<br />Dẫn đầu xu hướng.
               </h2>
               <p className="text-lg text-zinc-500 dark:text-zinc-400 mb-10 max-w-md leading-relaxed">
-                Trở thành những người đầu tiên sở hữu Helicorp SmartWatch. Nhận đặc quyền ưu đãi 20% và tham gia cộng đồng Beta Tester.
+                Trở thành những người đầu tiên sở hữu Corp SmartWatch. Nhận đặc quyền ưu đãi 20% và tham gia cộng đồng Beta Tester.
               </p>
               <ul className="space-y-4">
                 {[
@@ -339,8 +339,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-zinc-950 text-zinc-400 py-12 border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
-          <div className="font-bold text-white text-lg tracking-tighter">HELICORP</div>
-          <p>© 2026 Helicorp. Tất cả quyền được bảo lưu.</p>
+          <div className="font-bold text-white text-lg tracking-tighter">CORP</div>
+          <p>© 2026 Corp. Tất cả quyền được bảo lưu.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">Chính sách bảo mật</a>
             <a href="#" className="hover:text-white transition-colors">Điều khoản dịch vụ</a>

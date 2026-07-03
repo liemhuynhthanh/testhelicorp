@@ -77,7 +77,7 @@ export const useStore = create<StoreState>()(
         }),
     }),
     {
-      name: 'helicorp-storage', // name of the item in the storage (must be unique)
+      name: 'corp-storage', // name of the item in the storage (must be unique)
     }
   )
 );
