@@ -18,20 +18,6 @@ export const metadata: Metadata = {
   verification: {
     google: "H3j6RaQ4_toY8_yOPZeKsXAfEVAGcwLFhfi_B39TDkY",
   },
-  alternates: {
-    canonical: "/",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
   title: "Corp SmartWatch | Đồng hồ thông minh AI hàng đầu",
   description: "Corp SmartWatch - Đồng hồ thông minh tích hợp AI theo dõi sức khỏe toàn diện. Thiết kế Titanium sang trọng, màn hình AMOLED, pin 7 ngày, ECG & GPS tích hợp.",
   keywords: ["Đồng hồ thông minh", "SmartWatch", "Corp", "Đồng hồ AI", "Theo dõi sức khỏe", "SmartWatch Titanium"],
@@ -62,8 +48,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#09090b" },
