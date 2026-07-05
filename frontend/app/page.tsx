@@ -20,27 +20,27 @@ const FEATURES = [
   {
     title: "Mặt kính Sapphire",
     desc: "Chống xước tuyệt đối, hiển thị sắc nét dưới mọi góc nhìn, kể cả trong điều kiện ánh sáng gắt nhất.",
-    img: "/1.jpg"
+    img: "/1.webp"
   },
   {
     title: "Cảm biến sinh học AI",
     desc: "Theo dõi liên tục nhịp tim, nồng độ oxy trong máu và mức độ căng thẳng với độ chính xác chuẩn y tế.",
-    img: "/2.jpg"
+    img: "/2.webp"
   },
   {
     title: "Phân tích giấc ngủ",
     desc: "Tự động nhận diện các chu kỳ giấc ngủ và đưa ra gợi ý cải thiện để bạn thức dậy đầy năng lượng.",
-    img: "/3.jpg"
+    img: "/3.webp"
   },
   {
     title: "Chế tác tinh xảo",
     desc: "Khung viền Titanium nguyên khối siêu bền, mang lại cảm giác đeo thoải mái suốt ngày dài.",
-    img: "/4.jpg"
+    img: "/4.webp"
   },
   {
     title: "Kết nối liền mạch",
     desc: "Đồng bộ thông báo, cuộc gọi và dữ liệu sức khỏe tức thì với điện thoại thông minh của bạn.",
-    img: "/5.jpg"
+    img: "/5.webp"
   }
 ];
 
@@ -84,7 +84,7 @@ export default function Home() {
           {/* Background image parallax */}
           <motion.div style={{ y: yHero }} className="absolute inset-0 z-0">
             <Image
-              src="/1.jpg"
+              src="/1.webp"
               alt="Corp SmartWatch Hero"
               fill
               priority
@@ -93,7 +93,7 @@ export default function Home() {
               quality={60}
               className="object-cover object-center opacity-40 scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
+            <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/40 to-black"></div>
           </motion.div>
 
           <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-20">
@@ -171,7 +171,7 @@ export default function Home() {
                     transition={{ duration: 0.8 }}
                     className="relative w-full h-[60vh] rounded-3xl overflow-hidden shadow-2xl"
                   >
-                    <Image src={feat.img} alt={feat.title} fill className="object-cover" />
+                    <Image src={feat.img} alt={feat.title} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
                     <div className="absolute inset-0 border border-white/10 rounded-3xl z-10 pointer-events-none"></div>
                   </motion.div>
                 ))}
@@ -194,7 +194,7 @@ export default function Home() {
                     <p className="text-zinc-400 text-base">{feat.desc}</p>
                   </div>
                   <div className="relative w-full h-[50vh] rounded-2xl overflow-hidden shadow-2xl">
-                    <Image src={feat.img} alt={feat.title} fill className="object-cover" />
+                    <Image src={feat.img} alt={feat.title} fill sizes="(min-width: 768px) 100vw, 100vw" className="object-cover" />
                     <div className="absolute inset-0 border border-white/10 rounded-2xl z-10 pointer-events-none"></div>
                   </div>
                 </motion.div>
@@ -210,31 +210,31 @@ export default function Home() {
             <p className="text-xl text-zinc-600 max-w-2xl mx-auto">Bộ sưu tập dây đeo đa dạng, từ da thật cổ điển đến silicone thể thao, biến hóa phong cách trong tích tắc.</p>
           </div>
 
-          <div className="flex gap-4 md:gap-8 max-w-[1400px] mx-auto px-4 h-[80vh] md:h-[100vh]">
+          <div className="flex gap-4 md:gap-8 max-w-350 mx-auto px-4 h-[80vh] md:h-screen">
             <motion.div style={{ y: yMasonry1 }} className="flex-1 flex flex-col gap-4 md:gap-8 pt-10">
               <div className="relative w-full h-[40%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
-                <Image src="/5.jpg" alt="Gallery 5" fill className="object-cover" />
+                <Image src="/5.webp" alt="Gallery 5" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
               <div className="relative w-full h-[60%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
-                <Image src="/6.jpg" alt="Gallery 6" fill className="object-cover" />
+                <Image src="/6.webp" alt="Gallery 6" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
             </motion.div>
 
             <motion.div style={{ y: yMasonry2 }} className="flex-1 flex flex-col gap-4 md:gap-8">
               <div className="relative w-full h-[55%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
-                <Image src="/7.jpg" alt="Gallery 7" fill className="object-cover" />
+                <Image src="/7.webp" alt="Gallery 7" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
               <div className="relative w-full h-[45%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
-                <Image src="/8.jpg" alt="Gallery 8" fill className="object-cover" />
+                <Image src="/8.webp" alt="Gallery 8" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
             </motion.div>
 
             <motion.div style={{ y: yMasonry3 }} className="flex-1 flex flex-col gap-4 md:gap-8 pt-20">
               <div className="relative w-full h-[50%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
-                <Image src="/9.jpg" alt="Gallery 9" fill className="object-cover" />
+                <Image src="/9.webp" alt="Gallery 9" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
               <div className="relative w-full h-[50%] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
-                <Image src="/10.jpg" alt="Gallery 10" fill className="object-cover" />
+                <Image src="/10.webp" alt="Gallery 10" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
               </div>
             </motion.div>
           </div>
@@ -244,9 +244,10 @@ export default function Home() {
         <section className="relative h-screen overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 z-0 bg-black">
             <Image
-              src="/11.jpg"
+              src="/11.webp"
               alt="Premium Design"
               fill
+              sizes="100vw"
               className="object-cover object-center opacity-60"
             />
           </div>
@@ -273,7 +274,7 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="relative w-full aspect-square rounded-full overflow-hidden border-8 border-zinc-900 shadow-[0_0_100px_rgba(255,255,255,0.05)]">
-                <Image src="/12.jpg" alt="Specs visualization" fill className="object-cover" />
+                <Image src="/12.webp" alt="Specs visualization" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
               </div>
 
               <div className="space-y-6">
