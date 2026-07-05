@@ -42,7 +42,8 @@ export function CartDrawer() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm"
+            style={{ zIndex: 100 }}
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm"
           />
 
           {/* Drawer */}
@@ -51,7 +52,8 @@ export function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-y-0 right-0 z-[101] flex w-full flex-col bg-white dark:bg-zinc-950 sm:w-[400px] border-l border-zinc-200 dark:border-zinc-800 shadow-2xl"
+            style={{ zIndex: 101, width: "min(100vw, 400px)" }}
+            className="fixed inset-y-0 right-0 flex w-full flex-col bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 shadow-2xl"
           >
             <div className="flex items-center justify-between p-6 border-b border-zinc-100 dark:border-zinc-900">
               <h2 className="text-xl font-bold tracking-tight text-black dark:text-white">Giỏ hàng ({itemCount})</h2>
@@ -72,8 +74,8 @@ export function CartDrawer() {
               ) : (
                 cart.map((item) => (
                   <div key={item.id} className="flex gap-4 items-center bg-zinc-50 dark:bg-zinc-900 p-4 rounded-2xl">
-                    <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
-                      <Image src={item.image} alt={item.name} fill className="object-cover" />
+                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
+                      <Image src={item.image} alt={item.name} fill sizes="80px" className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-sm truncate text-black dark:text-white">{item.name}</h3>
