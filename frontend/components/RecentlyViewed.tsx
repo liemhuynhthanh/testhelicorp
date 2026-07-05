@@ -28,10 +28,10 @@ export function RecentlyViewed() {
               key={product.id}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex-shrink-0 w-[280px] snap-start flex items-center gap-4 bg-zinc-50 dark:bg-zinc-900/50 p-3 rounded-2xl border border-zinc-100 dark:border-zinc-800"
+              className="shrink-0 w-70 snap-start flex items-center gap-4 bg-zinc-50 dark:bg-zinc-900/50 p-3 rounded-2xl border border-zinc-100 dark:border-zinc-800"
             >
-              <div className="relative h-16 w-16 rounded-xl overflow-hidden bg-white dark:bg-zinc-800 flex-shrink-0">
-                <Image src={product.image} alt={product.name} fill className="object-cover" />
+              <div className="relative h-16 w-16 rounded-xl overflow-hidden bg-white dark:bg-zinc-800 shrink-0">
+                <Image src={product.image} alt={product.name} fill sizes="64px" className="object-cover" />
               </div>
               <div>
                 <h4 className="font-semibold text-sm line-clamp-1 text-black dark:text-white">{product.name}</h4>

@@ -11,21 +11,21 @@ const MOCK_PRODUCTS: Product[] = [
     id: "hw-titanium-silver",
     name: "Corp SmartWatch Silver",
     price: 999,
-    image: "/2.jpg",
+    image: "/2.webp",
     color: "Titanium Silver"
   },
   {
     id: "hw-titanium-black",
     name: "Corp SmartWatch Black",
     price: 1099,
-    image: "/8.jpg",
+    image: "/8.webp",
     color: "Titanium Black"
   },
   {
     id: "hw-titanium-gold",
     name: "Corp SmartWatch Gold",
     price: 1199,
-    image: "/10.jpg",
+    image: "/10.webp",
     color: "Titanium Gold"
   }
 ];
